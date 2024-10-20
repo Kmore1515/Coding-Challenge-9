@@ -42,7 +42,7 @@ class Patron {
         this.name = name;
         this.borrowedBooks = [];
     }
-        borrowedBooks(book) {
+        borrowBooks(book) {
             this.borrowedBooks.push(book);
             return `${book.title} is borrowed by ${this.name}`
         }
@@ -51,4 +51,17 @@ class Patron {
             this.borrowedBooks = this.borrowedBooks.filter(book => book !== book);
             return `${book.title} returned by ${this.name}`
         }
+}
+
+// Task 4: Create a VIPPatron Class that Inherits from Patron
+class VIPPatron extends Patron {
+    constructor(name) {
+        super(name)
+        this.priority = true
+    }
+    borrowBooks(book) {
+        book.isAvailable = false;
+        this.borrowedBooks.push(book);
+        return `${book.title} borrowed by VIP ${this.name}`
+    }
 }
