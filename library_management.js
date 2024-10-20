@@ -70,3 +70,31 @@ class VIPPatron extends Patron { // Takes the Patron class as a parent class
         return `${book.title} borrowed by VIP ${this.name}`
     }
 }
+
+// Task 6: Create and Manage Sections and Patrons
+const romance = new Section("Romance"); // Create sections
+const history = new Section("History");
+
+const book1 = new Book("Love", "Kyle Morris", "1234567890"); // Create books
+const book2 = new Book("World War 2", "John Doe", "2345678901")
+const book3 = new Book("Exploration of North America", "Jane Doe", "3456789012")
+
+romance.addBook(book1); // Add books to sections
+history.addBook(book2);
+history.addBook(book3);
+
+regularPatron = new Patron("Nicolas Santiago"); // Create patrons
+vipPatron = new VIPPatron("Giovanni Palencia", true)
+
+regularPatron.borrowBooks(book1); // regular patron tries to get book but VIP as priority
+vipPatron.borrowBooks(book1);
+
+regularPatron.returnBook(book1); // Returns book.
+
+romance.listBooks() // List books and availability
+
+console.log(`Total available books in Romance: ${romance.getAvailableBooks()}`);
+console.log(`Total available books in History: ${history.getAvailableBooks()}`)
+
+
+
